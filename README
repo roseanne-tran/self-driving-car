@@ -1,12 +1,7 @@
-CS175 PROJECT
-
-
-To what the PROJECT DEMO VIDEO, open demo.mov
-
-
 INSTRUCTIONS TO COMPILE
 
-1. LANE DETECTIONRequire: OpenCV
+1. LANE DETECTION
+Require: OpenCV
 Navigate to the Lane-Detection directory and run the following command line:
 $ python3 detect_lanes.py
 (press 'q' on the keyboard to quit the video)
