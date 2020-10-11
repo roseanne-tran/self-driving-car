@@ -60,9 +60,6 @@ PATH_TO_LABELS = 'models/research/object_detection/data/mscoco_label_map.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(PATH_TO_LABELS, use_display_name=True)
 
 
-# For the sake of simplicity we will test on 2 images:
-
-# In[ ]:
 
 
 # If you want to test the code with your images, just add path to the images to the TEST_IMAGE_PATHS.
@@ -80,33 +77,6 @@ TEST_IMAGE_PATHS
 
 model_name = 'ssd_mobilenet_v1_coco_2017_11_17'
 detection_model = load_model(model_name)
-
-
-# Check the model's input signature, it expects a batch of 3-color images of type uint8: 
-
-# In[ ]:
-
-
-#print(detection_model.inputs)
-#
-#
-## And returns several outputs:
-#
-## In[ ]:
-#
-#
-#detection_model.output_dtypes
-#
-#
-## In[ ]:
-#
-#
-#detection_model.output_shapes
-
-
-# Add a wrapper function to call the model, and cleanup the outputs:
-
-# In[ ]:
 
 
 def run_inference_for_single_image(model, image):
@@ -143,11 +113,6 @@ def run_inference_for_single_image(model, image):
   return output_dict
 
 
-# Run it on each test image and show the results:
-
-# In[ ]:
-
-
 def show_inference(model, image_path):
   # the array based representation of the image will be used later in order to prepare the
   
@@ -168,10 +133,6 @@ def show_inference(model, image_path):
       use_normalized_coordinates=True,
       line_thickness=5)
    
-  #display warning
-#  for i in range (len(output_dict['detection_boxes'][2])):
-#    print("INnnnnnnnn")
-#    print (output_dict['detection_boxes'][2][i])
 
   if output_dict['detection_classes'][2] == 3 or output_dict['detection_classes'][2] == 6 or output_dict['detection_classes'][2] == 8:
     if output_dict['detection_scores'][2] > 0.5:
@@ -190,20 +151,7 @@ def show_inference(model, image_path):
   if cv2.waitKey(1) & 0xFF == ord('q'):
     cv2.destroyAllWindows()
     return
-#    break
-#    break
-      
-#  cv2.destroyAllWindows()
 
-#  display(Image.fromarray(image_np))
-
-
-# In[ ]:
-
-
-#for image_path in TEST_IMAGE_PATHS:
-#image_path = "test-image.jpg"
-#show_inference(detection_model, image_path)
 
 #warning_sound = pygame.mixer.Sound(' ')
 #voice.play(warning_sound)
@@ -220,33 +168,3 @@ while (cap.isOpened()):
 
 cap.release()
 cv2.destroyAllWindows()
-
-
-
-
-#
-## ## Instance Segmentation
-#model_name = "mask_rcnn_inception_resnet_v2_atrous_coco_2018_01_28"
-#masking_model = load_model(model_name)
-#
-#
-## The instance segmentation model includes a `detection_masks` output:
-#
-## In[ ]:
-#
-#
-#masking_model.output_shapes
-#
-#
-## In[ ]:
-#
-#
-#for image_path in TEST_IMAGE_PATHS:
-#  show_inference(masking_model, image_path)
-#
-#
-## In[ ]:
-
-
-
-
