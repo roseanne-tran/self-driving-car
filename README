@@ -1,0 +1,25 @@
+INSTRUCTIONS TO COMPILE
+
+1. LANE DETECTION
+Require: OpenCV
+Navigate to the Lane-Detection directory and run the following command line:
+$ python3 detect_lanes.py
+(press 'q' on the keyboard to quit the video)
+
+2. TRAFFIC SIGN PREDICTION
+Require: Keras and OpenCV
+Navigate to the Traffic_signs folder
+To view the process of training the model, import Traffic_Sign_Model.ipynb to Google Colab. Drag data.zip,labels.csv, slippery-road(23).jpg, and yield(13).jpg to the file upload on the left. The run all cells.
+
+To test the traffic sign images using webcam camera, run the following command line:
+$ python3 traffic-detection.py 
+The folder images contains images the model has not seen. To test the model, hold the images to the webcam camera.
+
+3. COLLISION PREVENTION
+Require: TensorFlow and TensorFlow Object Detection API
+Instruction to install the TensorFlow Object Detection API can be found at 
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
+
+Navigate to the Collision-prevention folder, and run the following command line:
+$ python3 collision_detection.py
+
